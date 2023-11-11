@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JetbrainsAcademy_Kotlin_MazeRunner.iml" filepath="$PROJECT_DIR$/.idea/modules/JetbrainsAcademy_Kotlin_MazeRunner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Maze Runner (Kotlin)/task/JetbrainsAcademy_Kotlin_MazeRunner.Maze_Runner__Kotlin_-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Maze Runner (Kotlin)/task/JetbrainsAcademy_Kotlin_MazeRunner.Maze_Runner__Kotlin_-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Maze Runner (Kotlin)/task/JetbrainsAcademy_Kotlin_MazeRunner.Maze_Runner__Kotlin_-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Maze Runner (Kotlin)/task/JetbrainsAcademy_Kotlin_MazeRunner.Maze_Runner__Kotlin_-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Maze Runner (Kotlin)/task/JetbrainsAcademy_Kotlin_MazeRunner.Maze_Runner__Kotlin_-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Maze Runner (Kotlin)/task/JetbrainsAcademy_Kotlin_MazeRunner.Maze_Runner__Kotlin_-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/JetbrainsAcademy_Kotlin_MazeRunner.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/JetbrainsAcademy_Kotlin_MazeRunner.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/JetbrainsAcademy_Kotlin_MazeRunner.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/JetbrainsAcademy_Kotlin_MazeRunner.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/JetbrainsAcademy_Kotlin_MazeRunner.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/JetbrainsAcademy_Kotlin_MazeRunner.util.test.iml" />
+    </modules>
+  </component>
+</project>
