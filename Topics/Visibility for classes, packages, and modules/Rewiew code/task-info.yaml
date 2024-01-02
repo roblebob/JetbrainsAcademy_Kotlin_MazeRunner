@@ -1,0 +1,18 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: "open class BrokenPrivateBase {\n    private val brokenPrivateTaskProperty:\
+    \ String = \"Private property\"\n    private fun brokenPrivateTaskFunction() {\n\
+    \        println(\"Private function\")\n    }\n}\n\nclass BrokenPrivateDerived\
+    \ : BrokenPrivateBase() {\n    fun showBrokenPrivateElements() {\n        println(brokenPrivateTaskProperty)\n\
+    \        brokenPrivateTaskFunction() \n    }\n}"
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/28859#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 02 Jan 2024 12:03:30 UTC"
+record: -1
+submission_language: kotlin

@@ -1,0 +1,32 @@
+type: matching
+captions:
+  - reversed()
+  - sorted()
+  - sortedDescending()
+  - shuffled()
+  - asReversed()
+options:
+  - Will arrange the elements of a collection in natural order
+  - Will return the items in random order
+  - Will arrange the elements of a collection in reverse natural order
+  - Will return a copy of the original collection in reverse order
+  - Will return a reference to the original collection in reverse order
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/22631#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4

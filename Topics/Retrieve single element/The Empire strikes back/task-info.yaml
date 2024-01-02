@@ -1,0 +1,19 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      data class Ship(val name: String, val ammunition: Int)
+      
+      fun main() {
+          val ships = readln().split(" ")
+          val shipsList = ships.map { Ship(it.split("-")[0], it.split("-")[1].toInt()) }
+      
+          // write your code here
+      
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24885#comment
+status: Solved
+record: -1
+submission_language: kotlin

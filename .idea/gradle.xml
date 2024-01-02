@@ -11,6 +11,33 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/classes/java" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/classes/kotlin" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/generated/sources/annotationProcessor/java" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/generated/sources/headers/java" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/reports/tests" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/test-results" />
+            <option value="$PROJECT_DIR$/Maze Runner (Kotlin)/task/build/tmp" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/A palindrome list" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/Advantages of filtering by predicates" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/Are they divisible by 3" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/Match functions and results" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/Red pill and blue pill" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/The secret is in the length" />
+            <option value="$PROJECT_DIR$/Topics/Filtering elements in collection/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Ordering elements in collection/List of students" />
+            <option value="$PROJECT_DIR$/Topics/Ordering elements in collection/Match functions and results" />
+            <option value="$PROJECT_DIR$/Topics/Ordering elements in collection/Order your scores" />
+            <option value="$PROJECT_DIR$/Topics/Ordering elements in collection/The lottery numbers" />
+            <option value="$PROJECT_DIR$/Topics/Ordering elements in collection/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Ordering elements in collection/Which operations return an inverted list" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/Hacking the Matrix" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/Secret code to save the city" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/The Empire strikes back" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/The result of a function" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/The result of the code" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Retrieve single element/Which definition is correct" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

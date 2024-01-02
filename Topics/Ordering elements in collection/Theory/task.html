@@ -1,0 +1,55 @@
+<h2>Ordering elements in collection</h2>
+<div class="step-text">
+<p>When we are working with collections, <strong>ordering </strong>the elements<strong> </strong>of a collection is a crucial task. Kotlin offers you an opportunity to define the order of collection elements in different ways: in natural, reverse, random, or custom order.</p><p>In this topic, we will present functions that facilitate the direct sorting based on the own criteria of the objects of a collection.</p><h5 id="sorting-objects">Sorting objects</h5><p>In collections, <strong>natural</strong> <strong>order</strong> implies arranging numbers in ascending order, strings in alphabetical order, and dates in timeline order. Sorting in descending order is also possible.</p><p>In Kotlin, we have two functions: <code class="language-kotlin">sorted()</code> and <code class="language-kotlin">sortedDescending()</code> for sorting the elements of a collection in natural order as defined in the Comparable interface. <code class="language-kotlin">sorted()</code> gives us a collection where the elements are sorted in ascending order. <code class="language-kotlin">sortedDescending()</code> is used to apply descending order. These methods are available in all basic Kotlin collections.</p><pre><code class="language-kotlin">fun main() {
+    val numbers = listOf(3, 5, 6, 4, 1, 8, 2, 7)
+    println(numbers.sorted()) // [1, 2, 3, 4, 5, 6, 7, 8]
+    println(numbers.sortedDescending()) // [8, 7, 6, 5, 4, 3, 2, 1]
+
+    val words = listOf("racecar", "mom", "dad", "abracadabra", "MANDRAKE")
+    println(words.sorted()) // [MANDRAKE, abracadabra, dad, mom, racecar]
+    println(words.sortedDescending()) // [racecar, mom, dad, abracadabra, MANDRAKE]
+}</code></pre><h5 id="reverse-order">Reverse order</h5><p>We can obtain a collection in <strong>reverse order</strong> (based on the index positions) using two functions: <code class="language-kotlin">reversed()</code> and <code class="language-kotlin">asReversed()</code>. Let's take a look at the differences between them. Remember in ASCII or UTF-8, the uppercase letters are assigned lower numeric codes than their corresponding lowercase letters. So, the uppercase letters come before the lowercase letters when ordered by their decimal codes.</p><p>The <code class="language-kotlin">reversed()</code> function returns a copy of the original collection in reverse index order. If you change the original collection, the changes won't affect the copy.</p><pre><code class="language-kotlin">fun main() {
+    val numbers = mutableListOf(3, 5, 6, 4, 1, 8, 2, 7)
+    val reversedNumbers = numbers.reversed()
+    
+    println(numbers) // [3, 5, 6, 4, 1, 8, 2, 7]
+    println(reversedNumbers) // [7, 2, 8, 1, 4, 6, 5, 3]
+    numbers.add(9)
+    println(numbers) // [3, 5, 6, 4, 1, 8, 2, 7, 9]
+    println(reversedNumbers) // [7, 2, 8, 1, 4, 6, 5, 3]
+
+    val words = listOf("racecar", "mom", "dad", "abracadabra", "MANDRAKE")
+    val wordsReversed = words.reversed()
+    
+    println(words) // [racecar, mom, dad, abracadabra, MANDRAKE]
+    println(wordsReversed) // [MANDRAKE, abracadabra, dad, mom, racecar]
+}</code></pre><p>The <code class="language-kotlin">asReversed()</code> method returns a reference to the original collection in reverse index order. It is lighter because it does not create a new copy, but if the original collection changes, the changes are reflected in the reversed list. We must be careful if we work with mutable collections.</p><pre><code class="language-kotlin">fun main() {
+    val numbers = mutableListOf(3, 5, 6, 4, 1, 8, 2, 7)
+    val numbersAsReversed = numbers.asReversed()
+    
+    println(numbers) // [3, 5, 6, 4, 1, 8, 2, 7]
+    println(numbersAsReversed) // [7, 2, 8, 1, 4, 6, 5, 3]
+    
+    numbers.add(9)
+    
+    println(numbers) // [3, 5, 6, 4, 1, 8, 2, 7, 9]
+    println(numbersAsReversed) // [9, 7, 2, 8, 1, 4, 6, 5, 3]
+
+    val words = listOf("racecar", "mom", "dad", "abracadabra", "MANDRAKE")
+    val wordsAsReversed = words.asReversed()
+    println(words) // [racecar, mom, dad, abracadabra, MANDRAKE]
+    println(wordsAsReversed) // [MANDRAKE, abracadabra, dad, mom, racecar]
+}</code></pre><h5 id="random-order">Random order</h5><p>The <code class="language-kotlin">shuffled()</code> method gives you a new collection where the original items are <strong>randomly</strong> shuffled. You can use it without arguments or with a Random instance as the source of randomness. Using an integer as the seed in the Random generator will shuffle the elements in a random way, which can be reproduced if you keep using the same seed.</p><pre><code class="language-kotlin">fun main() {
+    val numbers = mutableListOf(3, 5, 6, 4, 1, 8, 2, 7)
+    val shuffledNumbers = numbers.shuffled()
+
+    println(numbers) // [3, 5, 6, 4, 1, 8, 2, 7]
+    println(shuffledNumbers) // [5, 3, 6, 7, 1, 8, 2, 4]
+    
+    val words = listOf("racecar", "mom", "dad", "abracadabra", "MANDRAKE")
+    val shuffledWords = words.shuffled(Random(1))
+
+    println(words) // [racecar, mom, dad, abracadabra, MANDRAKE]
+    println(shuffledWords) // [MANDRAKE, abracadabra, mom, dad, racecar]
+}</code></pre><h5 id="conclusion">Conclusion</h5><p>In this topic, we have seen different ways to arrange the elements of a collection – in natural order, reverse order, and random order. They offer us an elegant and easy way of organizing our collections.</p><p>Now is the time to check what you have learned about ordering. Let's go for it!</p>
+</div>

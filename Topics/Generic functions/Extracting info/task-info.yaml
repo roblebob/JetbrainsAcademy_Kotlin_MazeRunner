@@ -1,0 +1,21 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: |-
+      class ListUtils {
+          companion object Info {
+      
+              // define info method here
+      
+          }
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/16057#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 02 Jan 2024 14:41:23 UTC"
+record: -1
+submission_language: kotlin

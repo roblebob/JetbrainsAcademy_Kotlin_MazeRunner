@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Filtering_elements_in_collection-Advantages_of_filtering_by_predicates" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Filtering elements in collection/Advantages of filtering by predicates" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="JetbrainsAcademy_Kotlin_MazeRunner" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Filtering elements in collection/Advantages of filtering by predicates">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Filtering elements in collection/Advantages of filtering by predicates/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Filtering elements in collection/Advantages of filtering by predicates/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Filtering elements in collection/Advantages of filtering by predicates/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

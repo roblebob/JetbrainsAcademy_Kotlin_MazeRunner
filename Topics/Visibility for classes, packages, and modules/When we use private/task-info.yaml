@@ -1,0 +1,23 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: If code elements should be available only within the file in which they are
+      declared
+  - text: If code elements must be available on another computer
+  - text: If code elements must be available inside the module
+  - text: If code elements should not be available in classes other than the class in
+      which they are declared
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/28851#comment
+status: Solved
+record: -1
+local_check: false

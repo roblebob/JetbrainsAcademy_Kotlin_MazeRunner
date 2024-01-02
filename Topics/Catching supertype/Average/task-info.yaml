@@ -1,0 +1,29 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      fun main() {
+          val input = readln()
+          try {
+      
+              val list = input.split(",")
+              if (list == listOf("")) {
+                  throw IllegalArgumentException()
+              }
+              val numbers = list.map { it.toInt() }
+              val average = numbers.average()
+              println(average)
+      
+          } catch (...) { // Write the code to handle each exception as recommended
+              ...
+          }
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/31366#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 02 Jan 2024 15:15:33 UTC"
+record: -1
+submission_language: kotlin

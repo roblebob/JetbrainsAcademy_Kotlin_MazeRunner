@@ -1,0 +1,33 @@
+type: matching
+captions:
+  - filterNot()
+  - filterIsInstance()
+  - partition()
+  - filterIndexed()
+  - filter()
+options:
+  - Will split the collection in two according to the predicate
+  - Will return a collection that satisfies the result of evaluating the predicate on
+    the index and the element
+  - Will return the elements that don't match the predicate
+  - Will return a collection with the elements of the type indicated
+  - Will return a collection with the elements that match the predicate
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/22368#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4

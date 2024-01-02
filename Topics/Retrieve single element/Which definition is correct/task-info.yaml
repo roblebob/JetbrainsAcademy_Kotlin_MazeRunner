@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: Returns the result of the lambda and takes the first element of a collection
+      or return null.
+  - text: "Maps the collection with a selector function and returns the first non-null\
+    \ value in the result; if not, it returns null."
+  - text: ' Maps the collection with a selector function and returns the first non-null
+    value in the result.'
+  - text: Returns the first element of a collection according to a predicate or null
+      if it does not exist.
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24878#comment
+status: Solved
+record: -1
+custom_name: Which definition is correct?
+local_check: false

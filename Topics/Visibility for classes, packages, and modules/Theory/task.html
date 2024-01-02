@@ -1,0 +1,64 @@
+<h2>Visibility for classes, packages, and modules</h2>
+<div class="step-text">
+<p>Kotlin is a modern programming language developed by JetBrains, which has become very popular due to its conciseness, safety, and powerful features. In this topic, we will examine an important concept in the Kotlin language: the visibility of classes, packages, and modules. Visibility determines which code components are accessible from other parts of the code. Understanding visibility will help you write safer and more modular code.</p>
+<h5 id="defining-class-visibility">Defining class visibility</h5>
+<p>In Kotlin, class visibility is determined by visibility modifiers, which specify what code can access the class. There are four visibility modifiers:</p>
+<ul>
+<li><strong>public</strong>: The class is accessible from any code.</li>
+<li><strong>internal</strong>: The class is accessible only within the module.</li>
+<li><strong>protected</strong>: The class is accessible only within the class and its subclasses.</li>
+<li><strong>private</strong>: The class is accessible only within the file it is declared in.</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-kotlin">public class PublicClass
+internal class InternalClass
+protected class ProtectedClass // Compilation error, as protected classes cannot be top-level
+private class PrivateClass</code></pre>
+<h5 id="inheritance-and-visibility">Inheritance and visibility</h5>
+<p>In Kotlin, if a class inherits another class, it can access its protected and internal members. However, private members of the parent class are not accessible to subclasses.</p>
+<pre><code class="language-kotlin">open class Parent {
+    protected val protectedValue = 42
+    private val privateValue = 21
+}
+
+class Child : Parent() {
+    fun printValues() {
+        println(protectedValue) // Allowed
+        println(privateValue)   // Compilation error, as privateValue is not accessible
+    }
+}</code></pre>
+<h5 id="defining-package-visibility">Defining package visibility</h5>
+<p>Packages in Kotlin serve to group related classes, objects, and functions. Visibility within packages is determined by visibility modifiers, similar to those used for classes.</p>
+<pre><code class="language-kotlin">// In the file mypackage/MyClass.kt
+package mypackage
+
+public class MyClass
+internal class MyInternalClass</code></pre>
+<h5 id="import-and-package-usage">Import and package usage</h5>
+<p>To use classes from other packages, they must be imported. Public and internal classes are automatically imported if they are in the same module. Otherwise, to access them, you need to use the full class name or add an import.</p>
+<pre><code class="language-kotlin">import mypackage.MyClass
+
+fun main() {
+    val myClass = MyClass() // Using the imported class
+    val myInternalClass = mypackage.MyInternalClass() // Using the internal class without importing
+}</code></pre>
+<h5 id="modules-and-internal-visibility">Modules and internal visibility</h5>
+<p>A module is a set of source files compiled together. In Kotlin, a module can be an IntelliJ IDEA project, a Gradle or Maven project, or another compilation unit. Module visibility is regulated by the <code class="language-kotlin">internal</code> modifier.</p>
+<p>The <code class="language-kotlin">internal</code> modifier is used to indicate that a certain code element is accessible only within a single module. This is useful when you want to restrict access to parts of the code that should only be available within the module and should not be visible outside of it.</p>
+<pre><code class="language-kotlin">// In the file mymodule/MyInternalClass.kt
+package mymodule
+
+internal class MyInternalClass {
+    val value = 42
+}
+
+// In another file within the same module
+import mymodule.MyInternalClass
+
+fun main() {
+    val instance = MyInternalClass() // Allowed, as MyInternalClass is part of the same module
+    println(instance.value)
+}</code></pre>
+<h5 id="conclusion">Conclusion</h5>
+<p>In this topic, we have explored visibility in Kotlin for classes, packages, and modules. We have learned about visibility modifiers, such as <code class="language-kotlin">public</code>, <code class="language-kotlin">internal</code>, <code class="language-kotlin">protected</code>, and <code class="language-kotlin">private</code>, and how they determine access to code in different contexts. It is important to understand the principles of visibility in order to create modular and safe code.</p>
+</div>

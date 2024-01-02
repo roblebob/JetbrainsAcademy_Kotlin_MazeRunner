@@ -1,0 +1,165 @@
+<h2>Retrieve single element</h2>
+<div class="step-text">
+<p>Working with collections, we make use of grouped sets of elements or items, which is essential in a variety of tasks. In previous topics, you have learned to select collection elements, order them, retrieve some of them, and even group or transform them according to your needs.</p><p>In this topic, we will focus on single elements and explore different methods Kotlin offers for working with them.</p><h5 id="retrieve-by-position">Retrieve by position</h5><p>Collections, such as lists or sets, are accessed via indices, which start at <code class="language-kotlin">0</code> (the first element) and go up to <code class="language-kotlin">size-1</code> (the last element of the collection).</p><p>To get the element at a specific index position, you can use <code class="language-kotlin">elementAt()</code>. We can also fetch an element in an equivalent way with the <code class="language-kotlin">get()</code> function.</p><p>However, in the Kotlin world, things are easier if we use the <a href="https://kotlinlang.org/docs/list-operations.html#retrieve-elements-by-index" rel="noopener noreferrer nofollow" target="_blank">indexed access operator</a> <code class="language-kotlin">[]</code>, which is equivalent to the <code class="language-kotlin">get()</code> function on lists.</p><p>All of them will throw an <code class="language-kotlin">IndexOutOfBoundsException</code> if the index is not within the indicated limits (<code class="language-kotlin">0</code>.. <code class="language-kotlin">size-1</code>). </p><pre><code class="language-kotlin">fun main() {
+    
+    val numberList = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val numberSet = setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    // elementAt() returns the element at the specified index
+    println(numberList.elementAt(3)) // 4
+    println(numberSet.elementAt(3)) // 4
+
+    // get() returns the element at the specified index
+    println(numberList.get(3)) // 4
+    // println(numberSet.get(3)) // error: 'get' is not a member of 'Set'
+
+    // [] returns the element at the specified index
+    println(numberList[3]) // 4
+    // println(numberSet[3]) // error: 'get' is not a member of 'Set'
+
+    // be careful with the index – it can throw an exception if the index is out of bounds
+    // println(numberList[30]) // error: Index 30 out of bounds for length 10
+    // println(numberSet.elementAt(30)) // error: Index 30 out of bounds for length 10
+
+}</code></pre><p>Some of the most common operations include getting the first (index = 0) and the last (index = size-1) item in a collection. To avoid mistakes with the indices, we can use <code class="language-kotlin">first()</code> and <code class="language-kotlin">last()</code>. </p><pre><code class="language-kotlin">fun main() {
+    
+    val numberList = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val numberSet = setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    
+    // first() returns the first element
+    println(numberList.first()) // 1
+    println(numberSet.first()) // 1
+    
+    // last() returns the last element
+    println(numberList.last()) // 10
+    println(numberSet.last()) // 10 
+
+}</code></pre><p>In order not to have problems with exceptions when trying to get an invalid index element, we can make use of the following safe calls:</p><ul><li><p><code class="language-kotlin">elementAtOrNull()</code>: it will return null when the index position is out of the collection bounds.</p></li><li><p><code class="language-kotlin">elementAtOrElse()</code>: it takes a lambda function that returns the result of the lambda if the index position is out of the collection bounds.</p></li><li><p><code class="language-kotlin">getOrNull()</code>: it is the equivalent to <code class="language-kotlin">elementAtOrNull()</code> for a list.</p></li><li><p><code class="language-kotlin">getOrElse()</code>: it is the equivalent to <code class="language-kotlin">elementAtOrElse()</code> for a list.</p></li><li><p><code class="language-kotlin">firstOrNull()</code>: it is used to get the first element or null if the collection is empty.</p></li><li><p><code class="language-kotlin">lastOrNull()</code>: it is used to get the last element or null if the collection is empty.</p></li></ul><pre><code class="language-kotlin">fun main() {
+   
+    val emptyList = listOf&lt;Int&gt;()
+    val emptySet = setOf&lt;Int&gt;()
+
+    // firstOrNull() returns the first element or null if the list is empty
+    println(emptyList.firstOrNull()) // null
+    println(emptySet.firstOrNull()) // null
+
+    // lastOrNull() returns the last element or null if the list is empty
+    println(emptyList.lastOrNull()) // null
+    println(emptySet.lastOrNull()) // null
+
+    // elementAtOrNull() returns the element at the specified index or null if the index is out of bounds
+    println(numberList.elementAtOrNull(30)) // null
+    println(numberSet.elementAtOrNull(30)) // null
+
+    // getOrNull() returns the element at the specified index or null if the index is out of bounds
+    println(numberList.getOrNull(30)) // null
+    // println(numberSet.getOrNull(30)) // error: 'getOrNull' is not a member of 'Set'
+
+    // elementAtOrElse() returns the element at the specified index
+    // or the result of the given function if the index is out of bounds
+    println(numberList.elementAtOrElse(30) { "element not found" }) // element not found
+    println(numberSet.elementAtOrElse(30) { "element not found" }) // element not found
+
+    // getOrElse() returns the element at the specified index
+    // or the result of the given function if the index is out of bounds
+    println(numberList.getOrElse(30) { "element not found" }) // element not found
+    // println(numberSet.getOrElse(30) { "element not found" }) // error: 'getOrElse' is not a member of 'Set'
+}</code></pre><h5 id="retrieve-by-condition">Retrieve by condition</h5><p>Some functions allow you to get elements based on a predicate: <code class="language-kotlin">first()</code> and <code class="language-kotlin">last()</code>. You will only get the element if the predicate is true. To avoid an exception, you can use the secure calls: <code class="language-kotlin">firstOrNull()</code> and <code class="language-kotlin">lastOrNull()</code>. <br/>For the sake of ease, you can use these handy aliases:</p><ul><li><p><code class="language-kotlin">find()</code>: it is used instead of <code class="language-kotlin">firstOrNull()</code> and returns the first collection element according to a predicate or null if it does not exist.</p></li><li><p><code class="language-kotlin">findLast()</code>: it is used instead of <code class="language-kotlin">lastOrNull()</code> and returns the last collection element according to a predicate or null if it does not exist.</p></li></ul><pre><code class="language-kotlin">fun main() {
+    
+    val numberList = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val numberSet = setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    // first() with a lambda predicate
+    println(numberList.first { it &gt; 5 }) // 6
+    println(numberSet.first { it &gt; 5 }) // 6
+    
+    // last() with a lambda predicate
+    println(numberList.last { it &gt; 5 }) // 10
+    println(numberSet.last { it &gt; 5 }) // 10
+    
+    // be careful with the predicate – it can throw an exception if the predicate is not satisfied
+    // println(numberList.first { it &gt; 50 }) // error: NoSuchElementException
+    // println(numberSet.first { it &gt; 50 }) // error: NoSuchElementException
+    
+    // println(numberList.last { it &gt; 50 }) // error: NoSuchElementException
+    // println(numberSet.last { it &gt; 50 }) // error: NoSuchElementException
+
+    // firstOrNull() with a lambda predicate to return null if the predicate is not satisfied
+    println(emptyList.firstOrNull { it &gt; 50 }) // null
+    println(emptySet.firstOrNull { it &gt; 50 }) // null
+
+    // lastOrNull() with a lambda predicate to return null if the predicate is not satisfied
+    println(emptyList.lastOrNull { it &gt; 50 }) // null
+    println(emptySet.lastOrNull { it &gt; 50 }) // null
+    
+    // using find() with a lambda predicate 
+    println(numberList.find { it &gt; 5 }) // 6
+    println(numberSet.find { it &gt; 5 }) // 6
+    
+    // using findLast() with a lambda predicate
+    println(numberList.findLast { it &gt; 5 }) // 10
+    println(numberSet.findLast { it &gt; 5 }) // 10
+    
+    // using find() and findLast() with a lambda to return null if the predicate is not satisfied
+    println(emptyList.findLast { it &gt; 50 }) // null
+    println(emptySet.findLast { it &gt; 50 }) // null
+}</code></pre><h5 id="retrieve-with-selector">Retrieve with selector</h5><p>Sometimes, it is helpful to use a selector to map the collection before getting an element. The <code class="language-kotlin">firstNotNullOf()</code> method performs the following actions: maps the collection with a selector function and returns the first non-null value in the result. However,  it throws <code class="language-kotlin">NoSuchElementException</code> if there is no non-null element. To avoid that, you can use <code class="language-kotlin">firstNotNullOfOrNull()</code>.</p><pre><code class="language-kotlin">fun main() {
+    
+    val listOfNames = listOf("John", "Jane", "Mary", "Peter", "John", "Jane", "Mary", "Peter")
+    
+    // Mapping and returning a list of values
+    println(
+        listOfNames.firstNotNullOf { item -&gt; item.uppercase().takeIf { it.length &gt;= 4 } }
+    ) //JOHN
+    /*
+    println(
+        listOfNames.firstNotNullOf { item -&gt; item.uppercase().takeIf { it.length &gt;= 10 } }
+    ) // Exception
+    */
+    println(
+        listOfNames.firstNotNullOfOrNull { item -&gt; item.uppercase().takeIf { it.length &gt;= 4 } }
+    ) //JOHN
+    println(
+        listOfNames.firstNotNullOfOrNull { item -&gt; item.uppercase().takeIf { it.length &gt;= 10 } }
+    ) // null
+
+}</code></pre><h5 id="random-element">Random element</h5><p>Oftentimes, what you need is to obtain a random value from a collection. To do that, we can use the <code class="language-kotlin">random()</code> function. Remember, though, that this function throws <code class="language-kotlin">NoSuchElementException</code> if the array is empty. To avoid that, you can use the safer call <code class="language-kotlin">randomOrNull()</code>, which returns null if the collection is empty.</p><pre><code class="language-kotlin">fun main() {
+    
+    val listOfNames = listOf("John", "Jane", "Mary", "Peter", "John", "Jane", "Mary", "Peter")
+    
+    // returning a random element
+    println(listOfNames.random()) // Peter
+    println(listOfNames.randomOrNull()) // Jane
+    
+    val emptyListNames = listOf&lt;String&gt;()
+    // println(emptyListNames.random()) // Exception
+    println(emptyListNames.randomOrNull()) // null
+
+}</code></pre><h5 id="check-if-an-element-exists">Check if an element exists</h5><p>One of the crucial and daily tasks you will face when working with collections is to check if an element or a set of elements exists. <br/>To do that, you can use the <code class="language-kotlin">contains()</code> method – this methods returns <code class="language-kotlin">true</code> if the element is found in the collection. You can also do it in a more idiomatic way in Kotlin with the operator <code class="language-kotlin">in</code>. To check if a collection contains multiple elements, you can make use of  the method <code class="language-kotlin">containsAll()</code>.</p><p>Also, you can check if the collection has any elements with <code class="language-kotlin">isEmpty()</code> (it returns <code class="language-kotlin">true</code> if the collection is empty) or <code class="language-kotlin">isNotEmpty() </code>(it returns <code class="language-kotlin">true</code> if the collection is not empty).</p><pre><code class="language-kotlin">fun main() {
+
+    val listOfNames = listOf("John", "Jane", "Mary", "Peter", "John", "Jane", "Mary", "Peter")
+    val emptyListNames = listOf&lt;String&gt;()
+
+    // contains() returns true if the element is present in the list
+    println(listOfNames.contains("John")) // true
+    println(listOfNames.contains("john")) // false
+    
+    // the in operator can also be used to check if an element is present in the list
+    println("John" in listOfNames) // true
+    println("john" in listOfNames) // false
+    
+    // containsAll() returns true if all the elements are present in the list
+    println(listOfNames.containsAll(listOf("John", "Jane"))) // true
+    println(listOfNames.containsAll(listOf("John", "Jane", "john"))) // false
+
+    // list is empty
+    println(listOfNames.isEmpty()) // false
+    println(emptyListNames.isEmpty()) // true
+    
+    // list is not empty
+    println(listOfNames.isNotEmpty()) // true
+    println(emptyListNames.isNotEmpty()) // false
+
+
+}</code></pre><h5 id="conclusion">Conclusion</h5><p>In this topic, you have explored different ways of getting elements from a collection: by indicating the position, using conditions, with a selector, or randomly. Also, you have learned how to check if an element or several elements are contained in a collection.</p><p>Now, you are going to put it all into practice. Are you ready for the challenge?</p>
+</div>

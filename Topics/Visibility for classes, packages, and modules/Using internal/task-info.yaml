@@ -1,0 +1,21 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: If code elements should only be available within a single module.
+  - text: If code elements should be available within many classes.
+  - text: If code elements should only be available within one method.
+  - text: If code elements should only be available within one class.
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/28853#comment
+status: Solved
+record: -1
+local_check: false
