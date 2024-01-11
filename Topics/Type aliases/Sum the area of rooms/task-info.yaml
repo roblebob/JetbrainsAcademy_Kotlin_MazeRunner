@@ -1,0 +1,26 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: |-
+      class John {
+          class JohnApartment(sizeOfRoom: Int) {
+              val size: Int = sizeOfRoom
+          }
+      }
+      
+      class Nick {
+          class NickApartment(sizeOfRoom: Int) {
+              val size: Int = sizeOfRoom
+          }
+      }
+      
+      fun findTotalArea(): Int {
+          // return the total area
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19535#comment
+status: Solved
+record: -1
+submission_language: kotlin

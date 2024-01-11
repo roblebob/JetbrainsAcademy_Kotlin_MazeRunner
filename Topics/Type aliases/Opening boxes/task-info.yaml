@@ -1,0 +1,22 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      class BiggerBox() {
+          class InnerBox<T>(var items: List<T>) {
+              fun getSomethingFromBox(): List<T> {
+                  return items
+              }
+          }
+      }
+      typealias Box<T> = // write your code
+      fun main() {
+          var box = Box(listOf("lion", "rose"))
+          // print the number of items
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15359#comment
+status: Solved
+record: -1
+submission_language: kotlin
