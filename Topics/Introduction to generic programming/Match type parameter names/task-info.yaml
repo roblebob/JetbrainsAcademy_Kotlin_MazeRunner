@@ -7,12 +7,12 @@ captions:
   - E
   - "N"
 options:
+  - Second type
+  - Element
+  - Value or fourth type
   - First type
   - Third type
   - Number
-  - Element
-  - Second type
-  - Value or fourth type
 files:
   - name: src/Main.kt
     visible: true
