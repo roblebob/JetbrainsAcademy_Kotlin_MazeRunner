@@ -12,3 +12,5 @@ content:
   - Catching supertype
   - Local date and time
   - Type aliases
+  - Companion object
+  - Custom threads

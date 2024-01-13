@@ -1,48 +1,110 @@
 package mazerunner
 
+import java.io.File
 import kotlin.math.absoluteValue
 import kotlin.math.pow
 
+const val EXIT = "Exit"
+const val GENERATE = "Generate a new maze"
+const val LOAD = "Load a maze"
+const val SAVE = "Save the maze"
+const val DISPLAY = "Display the maze"
+val allOptions = listOf(EXIT, GENERATE, LOAD, SAVE, DISPLAY)
+
+
+var mMaze: Maze? = null
+
 
 fun main() {
-    val maze = Maze(readln())
-    maze.mPrint()
+
+    while (true) {
+        val mOptions = allOptions.filter {
+            when (it) {
+                SAVE -> mMaze != null
+                DISPLAY -> mMaze != null
+                else -> true
+            }
+        }
+
+        println("=== Menu ===")
+        mOptions.forEachIndexed { index, s ->
+            run {
+                if (index != 0) println("$index. $s")
+            }
+        }
+        println("0. ${mOptions[0]}")
+
+
+        when (mOptions[readln().toInt()]) {
+            EXIT -> {
+                println("Bye!")
+                break
+            }
+            GENERATE -> {
+                println("Enter the size of a new maze")
+                val size = readln().toInt()
+                mMaze = Maze(size, size)
+                println(mMaze)
+            }
+            LOAD -> {
+                println("Enter file name")
+                val file = File(readln())
+                if (file.exists()) {
+                    mMaze = Maze.toMaze(file.readText())
+                } else {
+                    println("The file $file does not exist")
+                }
+            }
+            SAVE -> {
+                println("Enter file name")
+                val file = File(readln())
+                file.writeText(mMaze.toString())
+                println()
+            }
+            DISPLAY -> {
+                println(mMaze)
+            }
+            else -> println("Incorrect option. Please try again")
+        }
+
+    }
 }
 
 
-typealias Pos = Pair<Int, Int>
-fun Pos.row() = this.first
-fun Pos.col() = this.second
-fun Pos.distance(other: Pos, l: Double = 2.0) = (
-        (this.row() - other.row()).toDouble().absoluteValue.pow(l) +
-        (this.col() - other.col()).toDouble().absoluteValue.pow(l)
-    ).pow(1 / l )
 
 
-class Maze(val height: Int, val width: Int = height, val distance: Double = 2.0, val bound: Int = 1) {
-    constructor(size: List<Int>) : this(size[0], size[1])
-    constructor(string: String) : this(string.split(" ").map { it.toInt() })
-
-    // pick a random cell (but bounds)
-    var next: Pos = (bound until height - bound).random() to (bound until width - bound).random()
-
-    private val passage = mutableSetOf(next, )
-    private val frontier = frontierCells(next)
+class Maze(val height: Int, val width: Int,
+           val passage: MutableSet<Pos> = mutableSetOf<Pos>(),
+           val distance: Double = 2.0, val bound: Int = 1 ) {
 
 
     init {
-        while (frontier.isNotEmpty()) {
+        if (passage.isEmpty()) {
+            // pick a random cell (but bounds)
+            var next: Pos = (bound until height - bound).random() to (bound until width - bound).random()
+            passage.add(next)
+            val frontier = frontierCells(next)
 
-            next = frontier.random()
-            frontier.remove(next)
 
-            if (isValid(next)) { passage.add(next) }
+            while (frontier.isNotEmpty()) {
 
-            val closest = passage.filter { it.distance(next) == distance }.random()
-            val inBetween = ((next.row() + closest.row()) / 2) to ((next.col() + closest.col()) / 2)
-            if (isValid(inBetween)) { passage.add(inBetween) }
+                next = frontier.random()
+                frontier.remove(next)
 
-            if (isValid(next)) { frontier.addAll(frontierCells(next)) }
+                if (isValid(next)) {
+                    passage.add(next)
+                }
+
+                val closest = passage.filter { it.distance(next) == distance }.random()
+                val inBetween = ((next.row() + closest.row()) / 2) to ((next.col() + closest.col()) / 2)
+                if (isValid(inBetween)) {
+                    passage.add(inBetween)
+                }
+
+                if (isValid(next)) {
+                    frontier.addAll(frontierCells(next))
+                }
+            }
         }
     }
 
@@ -67,20 +129,22 @@ class Maze(val height: Int, val width: Int = height, val distance: Double = 2.0,
     }
 
 
-    fun mPrint(msg: String = "") {
+    override fun toString(): String {
 
-        for (row in 0 until height) {
-            for (col in 0 until width) {
-                print(
-                    when (Pos(row, col)){
-                        //in setOf(next) -> NEXT_STR
-                        //in frontier -> FRONTIER_STR
-                        in passage -> PATH_STR
-                        else -> WALL_STR
-                    }
-                )
+        return buildString {
+            for (row in 0 until height) {
+                for (col in 0 until width) {
+                    append(
+                        when (Pos(row, col)) {
+                            //in setOf(next) -> NEXT_STR
+                            //in frontier -> FRONTIER_STR
+                            in passage -> PATH_STR
+                            else -> WALL_STR
+                        }
+                    )
+                }
+                append("\n")
             }
-            println()
         }
     }
 
@@ -88,9 +152,42 @@ class Maze(val height: Int, val width: Int = height, val distance: Double = 2.0,
     companion object {
         const val red = "\u001b[31m"
         const val reset = "\u001b[0m"
+
         const val WALL_STR = "\u2588\u2588"  // ██
+
         const val PATH_STR = "  "
         const val FRONTIER_STR = "\u2592\u2592"  // ▒▒
         const val NEXT_STR = red + "\u2591\u2591" + reset  // ░░
+
+
+        fun toMaze(string: String): Maze {
+            val lines = string.lines()
+                .filter { it.isNotBlank() }
+                .map { it.filterIndexed { index, _ -> index % 2 == 0 } }
+            val height = lines.size
+            val width = lines[0].length
+            val passage = mutableSetOf<Pos>()
+            for (row in 0 until height) {
+                for (col in 0 until width) {
+                    if (lines[row][col] == PATH_STR[0]) passage.add(row to col)
+                }
+            }
+            return Maze(height, width, passage)
+        }
     }
 }
+
+
+
+
+
+typealias Pos = Pair<Int, Int>
+fun Pos.row() = this.first
+fun Pos.col() = this.second
+fun Pos.distance(other: Pos, l: Double = 2.0) = (
+        (this.row() - other.row()).toDouble().absoluteValue.pow(l) +
+                (this.col() - other.col()).toDouble().absoluteValue.pow(l)
+        ).pow(1 / l )
+
+
+

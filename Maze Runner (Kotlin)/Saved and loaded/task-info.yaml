@@ -471,6 +471,12 @@ files:
           }
       }
     learner_created: false
+  - name: test_maze.txt
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24320#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 13 Jan 2024 15:37:00 UTC"
 record: -1

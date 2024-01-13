@@ -1,0 +1,31 @@
+type: table
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10709#comment
+status: Solved
+record: -1
+rows:
+  - Can be declared inside a class
+  - Can be declared inside an object
+  - The name can be omitted
+  - Any number can be declared within a class
+columns:
+  - Object declaration
+  - Companion object
+selected:
+  - - false
+    - false
+  - - false
+    - false
+  - - false
+    - false
+  - - false
+    - false
