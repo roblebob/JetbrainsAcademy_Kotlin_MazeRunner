@@ -514,6 +514,16 @@ files:
           }
       }
     learner_created: false
+  - name: test_maze.txt
+    visible: true
+    text: "██████████████████████████████\n██          ██              ██\n██  ██  █\
+    █  ██  ██████████████\n    ██  ██                  ██\n██████  ██████  ██████\
+    \  ██████\n██      ██          ██  ██  ██\n██  ██  ██████  ██████████  ██\n██\
+    \  ██  ██                  ██\n██  ██████████████  ██  ██████\n██  ██      ██\
+    \  ██  ██        \n██████████  ██  ██  ██  ██  ██\n██          ██      ██  ██\
+    \  ██\n██████████  ██  ██████████  ██\n██                  ██      ██\n███████\
+    ███████████████████████\n"
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24321#comment
 status: Unchecked
 record: -1
