@@ -1,6 +1,5 @@
 package mazerunner
 
-import org.cef.browser.CefMessageRouter
 import java.io.File
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -10,10 +9,8 @@ const val GENERATE = "Generate a new maze"
 const val LOAD = "Load a maze"
 const val SAVE = "Save the maze"
 const val DISPLAY = "Display the maze"
-const val FIND = "Find the escape"
-val allOptions = listOf(EXIT, GENERATE, LOAD, SAVE, DISPLAY, FIND)
-
-
+const val ESCAPE = "Find the escape"
+val allOptions = listOf(EXIT, GENERATE, LOAD, SAVE, DISPLAY, ESCAPE)
 var mMaze: Maze? = null
 
 
@@ -25,7 +22,6 @@ fun main() {
         mOptions.forEachIndexed { index, s -> run { if (index != 0) println("$index. $s") } }
         println("0. ${mOptions[0]}")
 
-
         when (mOptions[readln().toInt()]) {
             EXIT -> {
                 println("Bye!")
@@ -35,7 +31,7 @@ fun main() {
                 println("Enter the size of a new maze")
                 val size = readln().toInt()
                 mMaze = Maze(size, size)
-                println(mMaze.toString().replace(Maze.ESCAPE_STR, Maze.PATH_STR))
+                println(mMaze.toString().replace(Maze.ESCAPE_STR, Maze.PASSAGE_STR))
             }
             LOAD -> {
                 println("Enter file name")
@@ -52,8 +48,9 @@ fun main() {
                 file.writeText(mMaze.toString())
                 println()
             }
-            DISPLAY -> {
-                println(mMaze)
+            DISPLAY -> println(mMaze.toString().replace(Maze.ESCAPE_STR, Maze.PASSAGE_STR))
+            ESCAPE -> {
+
             }
             else -> println("Incorrect option. Please try again")
         }
@@ -128,7 +125,7 @@ class Maze(val height: Int, val width: Int,
                     append(
                         when (Pos(row, col)) {
                             in escape -> ESCAPE_STR
-                            in passage -> PATH_STR
+                            in passage -> PASSAGE_STR
                             else -> WALL_STR
                         }
                     )
@@ -141,7 +138,7 @@ class Maze(val height: Int, val width: Int,
 
     companion object {
         const val WALL_STR = "\u2588\u2588"  // ██
-        const val PATH_STR = "  "
+        const val PASSAGE_STR = "  "
         const val ESCAPE_STR = "//"
 
 
@@ -152,7 +149,7 @@ class Maze(val height: Int, val width: Int,
             val passage = mutableSetOf<Pos>()
             for (row in 0 until height) {
                 for (col in 0 until width) {
-                    if (lines[row][col] == PATH_STR[0]) passage.add(row to col)
+                    if (lines[row][col] == PASSAGE_STR[0]) passage.add(row to col)
                 }
             }
             return Maze(height, width, passage)
