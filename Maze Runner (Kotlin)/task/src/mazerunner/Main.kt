@@ -1,5 +1,6 @@
 package mazerunner
 
+import org.cef.browser.CefMessageRouter
 import java.io.File
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -9,7 +10,8 @@ const val GENERATE = "Generate a new maze"
 const val LOAD = "Load a maze"
 const val SAVE = "Save the maze"
 const val DISPLAY = "Display the maze"
-val allOptions = listOf(EXIT, GENERATE, LOAD, SAVE, DISPLAY)
+const val FIND = "Find the escape"
+val allOptions = listOf(EXIT, GENERATE, LOAD, SAVE, DISPLAY, FIND)
 
 
 var mMaze: Maze? = null
@@ -18,20 +20,9 @@ var mMaze: Maze? = null
 fun main() {
 
     while (true) {
-        val mOptions = allOptions.filter {
-            when (it) {
-                SAVE -> mMaze != null
-                DISPLAY -> mMaze != null
-                else -> true
-            }
-        }
-
+        val mOptions = allOptions.filter { it in listOf(EXIT, GENERATE, LOAD) || mMaze != null }
         println("=== Menu ===")
-        mOptions.forEachIndexed { index, s ->
-            run {
-                if (index != 0) println("$index. $s")
-            }
-        }
+        mOptions.forEachIndexed { index, s -> run { if (index != 0) println("$index. $s") } }
         println("0. ${mOptions[0]}")
 
 
@@ -44,7 +35,7 @@ fun main() {
                 println("Enter the size of a new maze")
                 val size = readln().toInt()
                 mMaze = Maze(size, size)
-                println(mMaze)
+                println(mMaze.toString().replace(Maze.ESCAPE_STR, Maze.PATH_STR))
             }
             LOAD -> {
                 println("Enter file name")
@@ -75,6 +66,7 @@ fun main() {
 
 class Maze(val height: Int, val width: Int,
            val passage: MutableSet<Pos> = mutableSetOf<Pos>(),
+           val escape: MutableSet<Pos> = mutableSetOf<Pos>(),
            val distance: Double = 2.0, val bound: Int = 1 ) {
 
 
@@ -130,14 +122,12 @@ class Maze(val height: Int, val width: Int,
 
 
     override fun toString(): String {
-
         return buildString {
             for (row in 0 until height) {
                 for (col in 0 until width) {
                     append(
                         when (Pos(row, col)) {
-                            //in setOf(next) -> NEXT_STR
-                            //in frontier -> FRONTIER_STR
+                            in escape -> ESCAPE_STR
                             in passage -> PATH_STR
                             else -> WALL_STR
                         }
@@ -150,20 +140,13 @@ class Maze(val height: Int, val width: Int,
 
 
     companion object {
-        const val red = "\u001b[31m"
-        const val reset = "\u001b[0m"
-
         const val WALL_STR = "\u2588\u2588"  // ██
-
         const val PATH_STR = "  "
-        const val FRONTIER_STR = "\u2592\u2592"  // ▒▒
-        const val NEXT_STR = red + "\u2591\u2591" + reset  // ░░
+        const val ESCAPE_STR = "//"
 
 
         fun toMaze(string: String): Maze {
-            val lines = string.lines()
-                .filter { it.isNotBlank() }
-                .map { it.filterIndexed { index, _ -> index % 2 == 0 } }
+            val lines = string.lines().map { it.filterIndexed { index, _ -> index % 2 == 0 } }
             val height = lines.size
             val width = lines[0].length
             val passage = mutableSetOf<Pos>()
