@@ -1,0 +1,9 @@
+custom_name: "Test predicates: checking elements in collection"
+content:
+  - Theory
+  - The right result is true
+  - Which operations return true
+  - Which definition is correct
+  - Benefits of Predicate Test
+  - The secret is in the length
+  - Is it a palindrome list

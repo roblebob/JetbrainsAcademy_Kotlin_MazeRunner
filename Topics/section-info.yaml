@@ -16,3 +16,6 @@ content:
   - Custom threads
   - CharSequence
   - Multi-dimensional array
+  - Set
+  - Mutable Set
+  - Test predicates  checking elements in collection
