@@ -1,0 +1,35 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: "interface Entity {\n    var hp: Int\n    var armorClass: Int\n}\n\ninterface\
+    \ NPC : Entity {\n    val xp: Int\n    var location: String\n}\n\ninterface Magical\
+    \ : Entity {\n    var mana: Int\n    var hasSpells: Boolean\n}\n\ninterface Divine\
+    \ : Entity {\n    var mana: Int\n    var hasPowers: Boolean\n}\n\ninterface Ranged\
+    \ : Entity {\n    var usesAmmo: Boolean\n    var ammoAmount: Int\n    fun rangedAttack()\
+    \ {}\n    fun retreat() {}\n}\n\ninterface Melee : Entity {\n    var amountOfWeapons:\
+    \ Int\n    fun meleeAttack() {}\n    fun meleeDodge() {}\n    fun sheatheWeapon()\
+    \ {}\n}\n\ninterface Healing {\n    fun healAlly() {}\n    fun healSelf() {}\n\
+    \    fun restoreMana() {}\n}\n\ninterface Ghostly {\n    val damageReduction:\
+    \ Int\n    fun passThrough() {}\n}\n\ninterface Flying : Entity {\n    fun flyByAction()\
+    \ {}\n    fun dash() {}\n    fun wingShield() {}\n}\n\nclass ValkyrieWarrior \n\
+    \    // Your code here:\n    :\n    {\n    override var amountOfWeapons: Int =\
+    \ 2\n    override var hp: Int = 10\n    override var mana: Int = 5\n    override\
+    \ var hasSpells: Boolean = false\n    override var armorClass: Int = 15\n\n  \
+    \  override fun sheatheWeapon() {}\n    override fun flyByAction() {}\n    override\
+    \ fun meleeAttack() {}\n    override fun healSelf() {}\n}\n\n\nclass PriestCompanion\
+    \ \n    // Your code here:\n    :  \n    {\n    override var mana: Int = 15\n\
+    \    override var hasPowers: Boolean = true\n    override val xp: Int = 100\n\
+    \    override var location: String = \"Werforce\"\n    override var ammoAmount:\
+    \ Int = 0\n    override var usesAmmo: Boolean = false\n    override var hp: Int\
+    \ = 6\n    override var armorClass: Int = 12\n\n    override fun healAlly() {}\n\
+    \    override fun healSelf() {}\n    override fun rangedAttack() {}\n}"
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20228#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Thu, 18 Jan 2024 18:34:00 UTC"
+record: -1
+submission_language: kotlin

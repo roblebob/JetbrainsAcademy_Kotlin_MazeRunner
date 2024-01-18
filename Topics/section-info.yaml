@@ -19,3 +19,8 @@ content:
   - Set
   - Mutable Set
   - Test predicates  checking elements in collection
+  - Mapping transformation
+  - Aggregate operations on collections
+  - Retrieve collection parts
+  - "Scope functions  let, run, and with"
+  - Interface inheritance
