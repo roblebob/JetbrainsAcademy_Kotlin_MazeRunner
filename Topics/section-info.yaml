@@ -24,3 +24,5 @@ content:
   - Retrieve collection parts
   - "Scope functions  let, run, and with"
   - Interface inheritance
+  - Delegate
+  - Commonly Used Regex

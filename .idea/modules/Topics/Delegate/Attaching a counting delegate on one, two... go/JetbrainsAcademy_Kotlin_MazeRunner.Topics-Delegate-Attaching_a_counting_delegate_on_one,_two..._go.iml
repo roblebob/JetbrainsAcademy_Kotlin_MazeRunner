@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Delegate-Attaching_a_counting_delegate_on_one,_two..._go" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Delegate/Attaching a counting delegate on one, two... go" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="JetbrainsAcademy_Kotlin_MazeRunner" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Delegate/Attaching a counting delegate on one, two... go">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Delegate/Attaching a counting delegate on one, two... go/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Delegate/Attaching a counting delegate on one, two... go/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Delegate/Attaching a counting delegate on one, two... go/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

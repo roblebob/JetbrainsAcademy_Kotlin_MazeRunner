@@ -50,7 +50,8 @@ fun main() {
             }
             DISPLAY -> println(mMaze.toString().replace(Maze.ESCAPE_STR, Maze.PASSAGE_STR))
             ESCAPE -> {
-
+                mMaze?.findEscape()
+                println(mMaze)
             }
             else -> println("Incorrect option. Please try again")
         }
@@ -59,16 +60,17 @@ fun main() {
 }
 
 
-
-
 class Maze(val height: Int, val width: Int,
-           val passage: MutableSet<Pos> = mutableSetOf<Pos>(),
-           val escape: MutableSet<Pos> = mutableSetOf<Pos>(),
-           val distance: Double = 2.0, val bound: Int = 1 ) {
+           val passage: MutableSet<Pos> = mutableSetOf(),
+           val escape: MutableList<Pos> = mutableListOf(),
+           val distance: Double = 2.0, val bound: Int = 1) {
 
+    val visited = mutableSetOf<Pos>()
 
     init {
         if (passage.isEmpty()) {
+            // set init values
+
             // pick a random cell (but bounds)
             var next: Pos = (bound until height - bound).random() to (bound until width - bound).random()
             passage.add(next)
@@ -80,23 +82,16 @@ class Maze(val height: Int, val width: Int,
                 next = frontier.random()
                 frontier.remove(next)
 
-                if (isValid(next)) {
-                    passage.add(next)
-                }
+                if (isValid(next)) passage.add(next)
 
                 val closest = passage.filter { it.distance(next) == distance }.random()
                 val inBetween = ((next.row() + closest.row()) / 2) to ((next.col() + closest.col()) / 2)
-                if (isValid(inBetween)) {
-                    passage.add(inBetween)
-                }
+                if (isValid(inBetween)) passage.add(inBetween)
 
-                if (isValid(next)) {
-                    frontier.addAll(frontierCells(next))
-                }
+                if (isValid(next)) frontier.addAll(frontierCells(next))
             }
         }
     }
-
 
     private fun isValid(pos: Pos): Boolean {
         if (pos.col() == 0          && passage.any { it.col() == 0 }) return false  // only one entrance
@@ -105,7 +100,6 @@ class Maze(val height: Int, val width: Int,
         if (pos.row() !in bound until height - bound) return false
         return true
     }
-
 
     private fun frontierCells(currentPos: Pos, distance: Int = 2 ): MutableSet<Pos> {
         val (row, col) = currentPos
@@ -116,6 +110,40 @@ class Maze(val height: Int, val width: Int,
             row to col + distance
         ).filter { it !in passage }.toMutableSet()
     }
+
+
+    public fun findEscape() {
+        visited.clear()
+        val start = passage.first { isEntrance(it) }
+        findEscapeHelper(start)
+    }
+
+    private fun findEscapeHelper(pos: Pos) {
+
+        if (isEscape(passage.last())) return
+        escape.add(pos)
+        visited.add(pos)
+        if (isEscape(escape.last())) return
+
+        if (getUnknownNeighborhood(pos).isNotEmpty()) {
+            for (neighbor in getUnknownNeighborhood(pos)) {
+                if (isEscape(escape.last())) return
+                findEscapeHelper(neighbor)
+                if (isEscape(escape.last())) return
+            }
+        } else {
+            while (getUnknownNeighborhood(escape.last()).isEmpty()) {
+                escape.remove(escape.last())
+            }
+        }
+    }
+
+    private fun isEntrance(pos: Pos): Boolean = pos.col() == 0
+    private fun isEscape(pos: Pos): Boolean = pos.col() == width - 1
+
+    private fun getUnknownNeighborhood(pos: Pos): Set<Pos> =
+        passage.filter { it.distance(pos) == 1.0 }.filter { it !in visited  }.toSet()
+
 
 
     override fun toString(): String {
@@ -143,13 +171,18 @@ class Maze(val height: Int, val width: Int,
 
 
         fun toMaze(string: String): Maze {
-            val lines = string.lines().map { it.filterIndexed { index, _ -> index % 2 == 0 } }
+            val lines = string.lines().filter { it.isNotBlank() }.map { it.filterIndexed { index, _ -> index % 2 == 0 } }
             val height = lines.size
             val width = lines[0].length
             val passage = mutableSetOf<Pos>()
             for (row in 0 until height) {
                 for (col in 0 until width) {
-                    if (lines[row][col] == PASSAGE_STR[0]) passage.add(row to col)
+                    try {
+                        if (lines[row][col] == PASSAGE_STR[0]) passage.add(row to col)
+                    } catch (e: Exception) {
+                        println("row: $row, col: $col, height: $height, width: $width, ")
+                        throw e
+                    }
                 }
             }
             return Maze(height, width, passage)

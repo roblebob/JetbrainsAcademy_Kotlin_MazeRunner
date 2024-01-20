@@ -516,14 +516,11 @@ files:
     learner_created: false
   - name: test_maze.txt
     visible: true
-    text: "██████████████████████████████\n██          ██              ██\n██  ██  █\
-    █  ██  ██████████████\n    ██  ██                  ██\n██████  ██████  ██████\
-    \  ██████\n██      ██          ██  ██  ██\n██  ██  ██████  ██████████  ██\n██\
-    \  ██  ██                  ██\n██  ██████████████  ██  ██████\n██  ██      ██\
-    \  ██  ██        \n██████████  ██  ██  ██  ██  ██\n██          ██      ██  ██\
-    \  ██\n██████████  ██  ██████████  ██\n██                  ██      ██\n███████\
-    ███████████████████████\n"
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24321#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Sat, 20 Jan 2024 15:28:08 UTC"
 record: -1

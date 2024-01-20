@@ -35,6 +35,12 @@
             <option value="$PROJECT_DIR$/Topics/CharSequence/Theory" />
             <option value="$PROJECT_DIR$/Topics/CharSequence/Unique characters" />
             <option value="$PROJECT_DIR$/Topics/CharSequence/Where is the palindrome" />
+            <option value="$PROJECT_DIR$/Topics/Commonly Used Regex/Groups syntax" />
+            <option value="$PROJECT_DIR$/Topics/Commonly Used Regex/Password validation" />
+            <option value="$PROJECT_DIR$/Topics/Commonly Used Regex/Phones without 9" />
+            <option value="$PROJECT_DIR$/Topics/Commonly Used Regex/Right group" />
+            <option value="$PROJECT_DIR$/Topics/Commonly Used Regex/Slash one" />
+            <option value="$PROJECT_DIR$/Topics/Commonly Used Regex/Theory" />
             <option value="$PROJECT_DIR$/Topics/Companion object/A good companion" />
             <option value="$PROJECT_DIR$/Topics/Companion object/Board game basics  Player" />
             <option value="$PROJECT_DIR$/Topics/Companion object/Companion" />
@@ -49,6 +55,13 @@
             <option value="$PROJECT_DIR$/Topics/Custom threads/The order of lines" />
             <option value="$PROJECT_DIR$/Topics/Custom threads/Theory" />
             <option value="$PROJECT_DIR$/Topics/Custom threads/When will a thread start performing a task" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/A delegate from within" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/And... what is the delegate used to do" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/As if inheritance conflicts weren't enough... delegate tricks and features" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/Attaching a counting delegate on one, two... go" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/Choosing the right delegate, with a bit of arithmetics mixed in" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/Hello, Delegate  Or are you Kotlin" />
+            <option value="$PROJECT_DIR$/Topics/Delegate/Theory" />
             <option value="$PROJECT_DIR$/Topics/Destructuring declarations/ComponentN" />
             <option value="$PROJECT_DIR$/Topics/Destructuring declarations/ComponentN (1)" />
             <option value="$PROJECT_DIR$/Topics/Destructuring declarations/Fix a bug" />
