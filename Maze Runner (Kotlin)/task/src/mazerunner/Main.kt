@@ -114,6 +114,7 @@ class Maze(val height: Int, val width: Int,
 
     public fun findEscape() {
         visited.clear()
+        escape.clear()
         val start = passage.first { isEntrance(it) }
         findEscapeHelper(start)
     }
